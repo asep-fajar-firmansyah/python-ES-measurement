@@ -11,7 +11,7 @@ reference from
 """
 import numpy as np
 
-class F1:
+class FMeasure:
     def _getScore(summ_tids, gold_list):
       k = len(summ_tids)
       #print(summ_tids)
