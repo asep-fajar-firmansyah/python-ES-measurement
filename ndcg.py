@@ -4,6 +4,10 @@
 Created on Sat Sep 18 10:19:58 2021
 
 @author: asep
+
+reference from 
+[1] https://github.com/nju-websoft/ESBM/tree/master/v1.2
+[2] https://github.com/nju-websoft/DeepLENS/blob/master/code/train_test.py
 """
 
 import math
