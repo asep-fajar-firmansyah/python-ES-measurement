@@ -1,1 +1,4 @@
-# python-ndcg
+# python-ES-measurement
+This repo contains classes to evaluate entity summarization performance, which are consists of:
+1. F-measure
+2. NDCG (Normalized Discounted Cummulative Gain)
