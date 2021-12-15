@@ -19,5 +19,15 @@ class MAP:
         correct_size = 0
         for i in range(result_size):
             if gold_list[i] in summ_tids:
+                prf = FMeasure._getScore(summ_tids, gold_list[:i])
+                correct_size +=1
+                avgP += prf[0]
+        
+        if correct_size != 0:
+            avgP /= len(summ_tids)
+        else:
+            avgP = 0
+        
+        return avgP
                 
 
