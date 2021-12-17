@@ -32,7 +32,6 @@ class NDCG:
         
         for pos in range(1, maxRankPos+1):
             t = triplesRank[pos-1]
-            #print("t", t)
             try:
                 rel = tripleGrade[t]
             except:
@@ -42,7 +41,6 @@ class NDCG:
             
             if (pos<=maxIdealPos):
                 idealRel = gradeList[pos-1]
-                #print("ideal", idealRel)
                 idcg += idealRel/math.log(pos + 1, 2)
         
         score = dcg/idcg
