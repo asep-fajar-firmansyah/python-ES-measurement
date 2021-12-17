@@ -10,7 +10,7 @@ We provide datasets as follows:
 2. FACES consists of 50 entities of DBpedia.
 
 ## Sample of results from entity summarizer (GATES)
-We provide sample of results from GATES as a entity summarizer. The samples are located in results folder. 
+We provide sample of results from GATES as a entity summarizer. The results are located in results folder. We also provide "rank.nt" and "rank_topk.nt", which can be used for not tunnable algo and tunnable algo, respectively.
 
 ## Acknowledge
 Thanks to https://github.com/nju-websoft/ESBM/tree/master/v1.2 and https://github.com/nju-websoft/DeepLENS for readable code.
