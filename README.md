@@ -4,7 +4,7 @@ This repo contains classes to evaluate entity summarization performance, which a
 2. NDCG (Normalized Discounted Cummulative Gain)
 3. mAP (Mean Average Precision)
 
-Datasets
+## Datasets
 This repo also provides datasets to evaluate the modules are working properly. The datasets are:
 1. ESBM version 1.2 consists of DBpedia and LinkedMDB datasets that contain 150 and 25 entities, respectively. 
 2. FACES consists of 50 entities of DBpedia.
