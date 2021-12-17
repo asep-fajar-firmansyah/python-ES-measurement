@@ -10,24 +10,51 @@ reference from
 [2] https://github.com/nju-websoft/DeepLENS/blob/master/code/train_test.py
 """
 
-from fmeasure import FMeasure
+from itertools import chain
+import numpy as np
 
 class MAP:
-    def _getScore(summ_tids, gold_list):
+    def getAvgMAP(self, summ_tids, gold_summ_list):
+        sumF=0
+        uNUM = len(gold_summ_list)
+        for gold_summ in gold_summ_list:
+            map_score = self.getMAP(summ_tids, gold_summ)
+            sumF += map_score
+        avgMAP = sumF/uNUM
+        #print("avgMAP", avgMAP, sumF, uNUM)
+        return avgMAP
+        
+    def getMAP(self, summ_tids, gold_summ):
         avgP=0
-        result_size = len(gold_list)
+        result_size = len(summ_tids)
+        #print("len summ tids", len(summ_tids))
         correct_size = 0
-        for i in range(result_size):
-            if gold_list[i] in summ_tids:
-                prf = FMeasure._getScore(summ_tids, gold_list[:i])
+        for i in range(1, result_size+1):
+            #print(i, "#######")
+            if summ_tids[i-1] in gold_summ:
+                #print("i", i-1)
+                p_scores = self._getP(summ_tids[:i], gold_summ)
                 correct_size +=1
-                avgP += prf[0]
+                avgP += p_scores
+            #print(summ_tids[i-1], gold_summ, avgP)
         
         if correct_size != 0:
-            avgP /= len(summ_tids)
+            avgPr = avgP/len(gold_summ)
+            #print("avgP", avgPr, avgP, len(gold_summ))
         else:
-            avgP = 0
-        
-        return avgP
-                
+            avgPr = 0
+        #print(avgPr)
+        #join = set()
+        #join.union(gold_list)
+        #print(join)
+        return avgPr
+     
+    def _getP(self, summ_tids, gold_summ):
+      k = len(summ_tids)
+      #print(summ_tids, gold_summ)
+      corr = len([t for t in summ_tids if t in gold_summ])
+      precision = corr/k
+      #print("precision", precision, corr, k)
+      return precision            
+
 

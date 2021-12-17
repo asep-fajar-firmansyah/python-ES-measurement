@@ -12,9 +12,9 @@ reference from
 import numpy as np
 
 class FMeasure:
-    def _getScore(summ_tids, gold_list):
+    def _getScore(self, summ_tids, gold_list):
       k = len(summ_tids)
-      #print(summ_tids)
+      #print(summ_tids, k)
       f_list = []
       #print(gold_list)
       for gold in gold_list:
