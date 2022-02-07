@@ -11,6 +11,7 @@ reference from
 """
 
 class MAP:
+    """mAP (mean average precision) is the average of AP"""
     def get_avg_map(self, summ_tids, gold_summ_list):
         sum_f=0
         u_num = len(gold_summ_list)
@@ -19,7 +20,6 @@ class MAP:
             sum_f += map_score
         avg_map = sum_f/u_num
         return avg_map
-        
     def get_MAP(self, summ_tids, gold_summ):
         avg_p=0
         result_size = len(summ_tids)
@@ -35,11 +35,8 @@ class MAP:
         else:
             avg_pr = 0
         return avg_pr
-     
     def get_precision_score(self, summ_tids, gold_summ):
         k = len(summ_tids)
         corr = len([t for t in summ_tids if t in gold_summ])
         precision = corr/k
         return precision            
-
-
