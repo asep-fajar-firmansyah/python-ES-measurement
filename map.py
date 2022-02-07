@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
+"""\
 Created on Wed Dec 15 11:35:58 2021
 
 @author: asep
@@ -11,7 +11,7 @@ reference from
 """
 
 class MAP:
-    def getAvgMAP(self, summ_tids, gold_summ_list):
+    def get_avg_MAP(self, summ_tids, gold_summ_list):
         sumF=0
         uNUM = len(gold_summ_list)
         for gold_summ in gold_summ_list:
@@ -20,7 +20,7 @@ class MAP:
         avgMAP = sumF/uNUM
         return avgMAP
         
-    def getMAP(self, summ_tids, gold_summ):
+    def get_MAP(self, summ_tids, gold_summ):
         avgP=0
         result_size = len(summ_tids)
         correct_size = 0
@@ -29,7 +29,6 @@ class MAP:
                 p_scores = self._getPrecisionScore(summ_tids[:i], gold_summ)
                 correct_size +=1
                 avgP += p_scores
-            
         
         if correct_size != 0:
             avgPr = avgP/len(gold_summ)
@@ -37,12 +36,10 @@ class MAP:
             avgPr = 0
         return avgPr
      
-    def _getPrecisionScore(self, summ_tids, gold_summ):
-      k = len(summ_tids)
-      #print(summ_tids, gold_summ)
-      corr = len([t for t in summ_tids if t in gold_summ])
-      precision = corr/k
-      #print("precision", precision, corr, k)
-      return precision            
+    def get_precision_score(self, summ_tids, gold_summ):
+        k = len(summ_tids)
+        corr = len([t for t in summ_tids if t in gold_summ])
+        precision = corr/k
+        return precision            
 
 

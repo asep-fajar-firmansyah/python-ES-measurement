@@ -11,7 +11,7 @@ reference from
 """
 import numpy as np
 
-class FMeasure(object):
+class FMeasure:
     """The F-Measure is the harmonic mean of the precision and recall. [https://en.wikipedia.org/wiki/F-score]"""
     def get_score(self, summ_tids, gold_list):
         k = len(summ_tids)
