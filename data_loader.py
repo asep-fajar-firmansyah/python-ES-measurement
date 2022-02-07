@@ -20,14 +20,14 @@ IN_FACES = os.path.join(path.dirname(os.getcwd()), 'GATES/data', 'FACES')
 
 # get data from ESBM benchmark v.1.2 for cross-validation - adapted by DeepLENS
 def get_5fold_train_valid_test_elist(ds_name_str, esbm_dir=IN_ESBM_DIR):
-  if ds_name_str == "dbpedia":
-    split_path = path.join(esbm_dir, "dbpedia_split")
-  elif ds_name_str == "lmdb":
-    split_path = path.join(esbm_dir, "lmdb_split")
-  elif ds_name_str == "faces":
-    split_path = path.join(esbm_dir, "faces_split")
-  else:
-    raise ValueError("The database's name must be dbpedia or lmdb")
+    if ds_name_str == "dbpedia":
+        split_path = path.join(esbm_dir, "dbpedia_split")
+    elif ds_name_str == "lmdb":
+        split_path = path.join(esbm_dir, "lmdb_split")
+    elif ds_name_str == "faces":
+        split_path = path.join(esbm_dir, "faces_split")
+    else:
+        raise ValueError("The database's name must be dbpedia or lmdb")
 
   trainList, validList, testList = [],[],[]
   for i in range(5): # 5-folds
