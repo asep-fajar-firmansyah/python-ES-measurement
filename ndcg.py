@@ -25,25 +25,21 @@ class ndcg:
                     triple_grade[t]= triple_grade[t]+1
         grade_list = list(triple_grade.values())
         grade_list.sort(reverse=True)
-        
         dcg = 0
         idcg = 0
-        
         max_rank_pos = len(triples_rank)
         max_ideal_pos = len(grade_list)
-        
         for pos in range(1, max_rank_pos+1):
-            t = triples_rank[pos-1]
+            t_pos = triples_rank[pos-1]
             try:
-                rel = triple_grade[t]
+                rel = triple_grade[t_pos]
             except:
                 rel=0
             dcg_item = rel/math.log(pos + 1, 2)
             dcg += dcg_item
-            
             if (pos<=max_ideal_pos):
-                idealRel = grade_list[pos-1]
-                idcg += idealRel/math.log(pos + 1, 2)
-        
+                ideal_rel = grade_list[pos-1]
+                idcg += ideal_rel/math.log(pos + 1, 2)
         score = dcg/idcg
         return score
+    
