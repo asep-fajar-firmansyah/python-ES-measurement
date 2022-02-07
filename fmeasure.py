@@ -11,8 +11,9 @@ reference from
 """
 import numpy as np
 
-class FMeasure:
-    def _getScore(self, summ_tids, gold_list):
+class FMeasure(object):
+    """The F-Measure is the harmonic mean of the precision and recall. [https://en.wikipedia.org/wiki/F-score]"""
+    def get_score(self, summ_tids, gold_list):
         k = len(summ_tids)
         f_list = []
         for gold in gold_list:
@@ -22,7 +23,8 @@ class FMeasure:
             corr = len([t for t in summ_tids if t in gold])
             precision = corr/k
             recall = corr/len(gold)
-            f1 = 2*((precision*recall)/(precision+recall)) if corr!=0 else 0
-            f_list.append(f1)
+            f_score = 2*((precision*recall)/(precision+recall)) if corr!=0 else 0
+            f_list.append(f_score)
         favg = np.mean(f_list)
         return favg
+    
