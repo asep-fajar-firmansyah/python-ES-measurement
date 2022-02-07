@@ -5,42 +5,44 @@ Created on Sat Sep 18 10:19:58 2021
 
 @author: asep
 
-reference from 
+reference from
 [1] https://github.com/nju-websoft/ESBM/tree/master/v1.2
 [2] https://github.com/nju-websoft/DeepLENS/blob/master/code/train_test.py
 """
 
 import math
 
-class NDCG:
-    def _getScore(self, tripleGoldSummaries, triplesRank):
-        tripleGrade = {}
-        for tripleGoldSum in tripleGoldSummaries:
-            for t in tripleGoldSum:
-                if t not in tripleGrade:
-                    tripleGrade[t]=1
+class ndcg:
+    """NDCG stand for Normalized Discounted Cumulative Gain"""
+    def get_score(self, triple_gold_summaries, triples_rank):
+        """ the score is to measure the quality of a set of search results"""
+        triple_grade = {}
+        for triple_gold_sum in triple_gold_summaries:
+            for t in triple_gold_sum:
+                if t not in triple_grade:
+                    triple_grade[t]=1
                 else:
-                    tripleGrade[t]= tripleGrade[t]+1
-        gradeList = list(tripleGrade.values())
-        gradeList.sort(reverse=True)
+                    triple_grade[t]= triple_grade[t]+1
+        grade_list = list(triple_grade.values())
+        grade_list.sort(reverse=True)
         
         dcg = 0
         idcg = 0
         
-        maxRankPos = len(triplesRank)
-        maxIdealPos = len(gradeList)
+        max_rank_pos = len(triples_rank)
+        max_ideal_pos = len(grade_list)
         
-        for pos in range(1, maxRankPos+1):
-            t = triplesRank[pos-1]
+        for pos in range(1, max_rank_pos+1):
+            t = triples_rank[pos-1]
             try:
-                rel = tripleGrade[t]
+                rel = triple_grade[t]
             except:
                 rel=0
-            dcgItem = rel/math.log(pos + 1, 2)
-            dcg += dcgItem
+            dcg_item = rel/math.log(pos + 1, 2)
+            dcg += dcg_item
             
-            if (pos<=maxIdealPos):
-                idealRel = gradeList[pos-1]
+            if (pos<=max_ideal_pos):
+                idealRel = grade_list[pos-1]
                 idcg += idealRel/math.log(pos + 1, 2)
         
         score = dcg/idcg

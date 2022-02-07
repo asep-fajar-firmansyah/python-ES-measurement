@@ -20,7 +20,7 @@ class MAP:
         avg_map = sum_f/u_num
         return avg_map
     def get_avg_pr(self, summ_tids, gold_summ):
-        """Average precision is a measure that combines recall and precision for ranked retrieval results"""
+        """Average precision is a measure that combines recall and precision"""
         avg_p=0
         result_size = len(summ_tids)
         correct_size = 0
@@ -39,4 +39,5 @@ class MAP:
         k = len(summ_tids)
         corr = len([t for t in summ_tids if t in gold_summ])
         precision = corr/k
-        return precision            
+        return precision
+    
