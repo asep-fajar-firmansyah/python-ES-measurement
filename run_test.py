@@ -10,7 +10,7 @@ import os.path as path
 import numpy as np
 
 from data_loader import get_all_data
-from ndcg import NDCG
+from ndcg import nDCGMeasurement
 from fmeasure import FMeasure
 from map import MAP
 IN_ESBM_DIR = os.path.join(os.getcwd(), 'data', 'ESBM_benchmark_v1.2')
@@ -55,7 +55,7 @@ def get_topk_triples(db_path, num, top_n, triples_dict):
         encoded_triples.append(encoded_triple)
   return triples, encoded_triples
 
-ndcg_class = NDCG()
+ndcg_class = nDCGMeasurement()
 fmeasure = FMeasure()
 m = MAP()
 

@@ -12,12 +12,12 @@ reference from
 
 import math
 
-class ndcg:
+class nDCGMeasurement:
     """NDCG stand for Normalized Discounted Cumulative Gain"""
-    def get_score(self, triple_gold_summaries, triples_rank):
+    def get_score(self, gold_summaries, triples_rank):
         """ the score is to measure the quality of a set of search results"""
         triple_grade = {}
-        for triple_gold_sum in triple_gold_summaries:
+        for triple_gold_sum in gold_summaries:
             for t in triple_gold_sum:
                 if t not in triple_grade:
                     triple_grade[t]=1
