@@ -96,7 +96,7 @@ for dataset in ds:
             #ndcg_score = getNDCG(rel)
             ndcg_score = ndcg_class._getScore(gold_list_top, encoded_rank_triples)
             f_score = fmeasure.get_score(encoded_topk_triples, gold_list_top)
-            map_score = m.getAvgMAP(encoded_rank_triples, gold_list_top)
+            map_score = m.get_avg_map(encoded_rank_triples, gold_list_top)
             #print(ndcg_score)
             #print("*************************")
             total_ndcg += ndcg_score
@@ -119,7 +119,7 @@ for dataset in ds:
             #ndcg_score = getNDCG(rel)
             ndcg_score = ndcg_class._getScore(gold_list_top, encoded_rank_triples)
             f_score = fmeasure.get_score(encoded_topk_triples, gold_list_top)
-            map_score = m.getAvgMAP(encoded_rank_triples, gold_list_top)
+            map_score = m.get_avg_map(encoded_rank_triples, gold_list_top)
             #print(ndcg_score)
             #print("*************************")
             total_ndcg += ndcg_score

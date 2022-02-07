@@ -11,30 +11,30 @@ reference from
 """
 
 class MAP:
-    def get_avg_MAP(self, summ_tids, gold_summ_list):
-        sumF=0
-        uNUM = len(gold_summ_list)
+    def get_avg_map(self, summ_tids, gold_summ_list):
+        sum_f=0
+        u_num = len(gold_summ_list)
         for gold_summ in gold_summ_list:
             map_score = self.getMAP(summ_tids, gold_summ)
-            sumF += map_score
-        avgMAP = sumF/uNUM
-        return avgMAP
+            sum_f += map_score
+        avg_map = sum_f/u_num
+        return avg_map
         
     def get_MAP(self, summ_tids, gold_summ):
-        avgP=0
+        avg_p=0
         result_size = len(summ_tids)
         correct_size = 0
         for i in range(1, result_size+1):
             if summ_tids[i-1] in gold_summ:
                 p_scores = self._getPrecisionScore(summ_tids[:i], gold_summ)
                 correct_size +=1
-                avgP += p_scores
+                avg_p += p_scores
         
         if correct_size != 0:
-            avgPr = avgP/len(gold_summ)
+            avg_pr = avg_p/len(gold_summ)
         else:
-            avgPr = 0
-        return avgPr
+            avg_pr = 0
+        return avg_pr
      
     def get_precision_score(self, summ_tids, gold_summ):
         k = len(summ_tids)
